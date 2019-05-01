@@ -15,11 +15,16 @@ GenUD <- function(n,s,q,init="rand",initX=matrix(0),crit="CD2",
   else if(s<=1 || n<=2 || q <=1){ stop(("The size of design should be larger than 2*2.")) }
   else if(init=="input"){
     initX = as.matrix(initX)
+    bflag_init = FALSE
+    for (i in 1:nrow(xp)) { bflag_init = bflag_init || (max(table(initX[,i]))>n/q)}
     if ((n != nrow(initX)) || (s != ncol(initX))) {
       stop("The size of the input design matrix does not match the given n,s.")
      } else if ((1 != min(initX)) | (q != max(initX)) || (!all(round(initX) == initX))){
       stop("The values of the input design matrix should be integers within: 1,2,3...,q.")
+     } else if (bflag_init){
+      stop("initX does not follow a balanced design, please increase the number of n or remove duplicated elements (per column) in initX.")
      }
+
   }
   list <- SATA_UD(n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt)
   names(list) = c("initial_design","final_design","initial_criterion",
@@ -55,6 +60,7 @@ GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   else if (init=="input"){
         initX = as.matrix(initX)
         bflag_init = FALSE
+        for (i in 1:nrow(xp)) { bflag_init = bflag_init || (max(table(initX[,i]))>n/q)}
         if ((n <= nrow(initX)) || (s != ncol(initX))) {
           stop("The size of the input design matrix does not match the given n,s.")
          } else if ((1 > min(initX)) | (q < max(initX)) || (!all(round(initX) == initX))){
