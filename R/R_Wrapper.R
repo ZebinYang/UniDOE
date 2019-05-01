@@ -53,7 +53,7 @@ GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n <= nrow(xp)) | (s != ncol(xp)) ){
     stop("The size of the existing design matrix xp does not match the given n,s.")}
-  else if ((!all(round(xp) == xp)) | (1 > np.min(xp)) | (q < np.max(xp))) {
+  else if ((!all(round(xp) == xp)) | (1 > min(xp)) | (q < max(xp))) {
         stop("The values of the existing design matrix x0 should be integers within: 1,2,3...,q.")}
   else if (bflag_xp) {
         stop("xp does not follow a balanced design, please increase the number of n or remove duplicated elements (per column) in xp.")}
@@ -69,7 +69,7 @@ GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
           stop("initX does not follow a balanced design, please increase the number of n or remove duplicated elements (per column) in initX.")
          }
   }
-                         
+
   np = nrow(xp)
   nnew = n - np
 
@@ -99,8 +99,8 @@ GenAUD_COL <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   else if(s<=1 || n<=2 || q <=1){ stop(("\n The size of design should be larger than 2*2.")) }
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n != nrow(xp)) | (s <= ncol(xp)) ){
-    stop("The size of the existing design matrix xp does not match the given n,s.") } 
-  else if ((!all(round(xp) == xp)) | (1 != np.min(xp)) | (q != np.max(xp))) {
+    stop("The size of the existing design matrix xp does not match the given n,s.") }
+  else if ((!all(round(xp) == xp)) | (1 != min(xp)) | (q != max(xp))) {
         stop("The values of the existing design matrix x0 should be integers within: 1,2,3...,q.")}
   else if (bflag_xp) {
         stop("xp does not follow a balanced design, please increase the number of n or remove duplicated elements (per column) in xp.")}
@@ -116,7 +116,7 @@ GenAUD_COL <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
           stop("initX does not follow a balanced design, please increase the number of n or remove duplicated elements (per column) in initX.")
          }
   }
-    
+
   nvp = ncol(xp)
   list= SATA_AUD_COL(xp, s - nvp, q, init, initX, crit, maxiter, hits_ratio, levelpermt)
   names(list) = c("initial_design","final_design","initial_criterion",

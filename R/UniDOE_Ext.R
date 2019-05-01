@@ -66,7 +66,7 @@ GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n <= nrow(xp)) | (s != ncol(xp)) ){
     stop("The size of the existing design matrix xp does not match the given n,s.")}
-  else if ((!all(round(xp) == xp)) | (1 > np.min(xp)) | (q < np.max(xp))) {
+  else if ((!all(round(xp) == xp)) | (1 > min(xp)) | (q < max(xp))) {
         stop("The values of the existing design matrix x0 should be integers within: 1,2,3...,q.")}
   else if (bflag_xp) {
         stop("xp does not follow a balanced design, please increase the number of n or remove duplicated elements (per column) in xp.")}
@@ -107,7 +107,7 @@ GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=F
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n != nrow(xp)) | (s <= ncol(xp)) ){
     stop("The size of the existing design matrix xp does not match the given n,s.") }
-  else if ((!all(round(xp) == xp)) | (1 != np.min(xp)) | (q != np.max(xp))) {
+  else if ((!all(round(xp) == xp)) | (1 != min(xp)) | (q != max(xp))) {
         stop("The values of the existing design matrix x0 should be integers within: 1,2,3...,q.")}
   else if (bflag_xp) {
         stop("xp does not follow a balanced design, please increase the number of n or remove duplicated elements (per column) in xp.")}
