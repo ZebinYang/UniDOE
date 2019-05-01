@@ -58,6 +58,7 @@ GenUD_MS <- function(n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE)
 
 GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE)
 {
+  bflag_xp = FALSE
   for (i in 1:nrow(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
@@ -105,7 +106,7 @@ GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=F
   else if(s<=1 || n<=2 || q <=1){ stop(("\n The size of design should be larger than 2*2.")) }
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n != nrow(xp)) | (s <= ncol(xp)) ){
-    stop("The size of the existing design matrix xp does not match the given n,s.") } 
+    stop("The size of the existing design matrix xp does not match the given n,s.") }
   else if ((!all(round(xp) == xp)) | (1 != np.min(xp)) | (q != np.max(xp))) {
         stop("The values of the existing design matrix x0 should be integers within: 1,2,3...,q.")}
   else if (bflag_xp) {
