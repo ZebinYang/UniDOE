@@ -46,7 +46,7 @@ GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   #check the arguments
   xp = as.matrix(xp)
   bflag_xp = FALSE
-  for (i in 1:nrow(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
+  for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
   else if(s<=1 || n<=2 || q <=1){ stop(("The size of design should be larger than 2*2.")) }
@@ -93,7 +93,7 @@ GenAUD_COL <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   #check the arguments
   xp = as.matrix(xp)
   bflag_xp = FALSE
-  for (i in 1:nrow(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
+  for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
   else if(s<=1 || n<=2 || q <=1){ stop(("\n The size of design should be larger than 2*2.")) }
