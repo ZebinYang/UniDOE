@@ -7,7 +7,7 @@ DesignEval<-function(x = matrix(0), crit="CD2")
 }
 
 GenUD <- function(n,s,q,init="rand",initX=matrix(0),crit="CD2",
-                  maxiter=10000,hits_ratio = 0.1,levelpermt=FALSE,vis=FALSE)
+                  maxiter=10000,hits_ratio = 0.1,levelpermt=FALSE,rand_seed=0,vis=FALSE)
 {
   #check the arguments
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
@@ -26,7 +26,8 @@ GenUD <- function(n,s,q,init="rand",initX=matrix(0),crit="CD2",
      }
 
   }
-  list <- SATA_UD(n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt)
+
+  list <- SATA_UD(n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt,rand_seed)
   names(list) = c("initial_design","final_design","initial_criterion",
                   "final_criterion","time_consumed","criterion_history")
   if(vis == TRUE){
@@ -41,7 +42,7 @@ GenUD <- function(n,s,q,init="rand",initX=matrix(0),crit="CD2",
 }
 
 GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
-                    maxiter=10000, hits_ratio = 0.1,levelpermt=FALSE, vis=FALSE)
+                    maxiter=10000, hits_ratio = 0.1,levelpermt=FALSE,rand_seed=0,vis=FALSE)
 {
   #check the arguments
   xp = as.matrix(xp)
@@ -73,7 +74,7 @@ GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   np = nrow(xp)
   nnew = n - np
 
-  list= SATA_AUD(xp, nnew, s, q, init, initX, crit, maxiter, hits_ratio,levelpermt)
+  list= SATA_AUD(xp, nnew, s, q, init, initX, crit, maxiter, hits_ratio,levelpermt,rand_seed)
   names(list) = c("initial_design","final_design","initial_criterion",
                   "final_criterion","time_consumed","criterion_history")
   if(vis == TRUE){
@@ -88,7 +89,7 @@ GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
 }
 
 GenAUD_COL <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
-                        maxiter=10000, hits_ratio = 0.1, levelpermt=FALSE, vis=FALSE)
+                        maxiter=10000, hits_ratio = 0.1, levelpermt=FALSE,rand_seed,vis=FALSE)
 {
   #check the arguments
   xp = as.matrix(xp)
@@ -118,7 +119,7 @@ GenAUD_COL <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   }
 
   nvp = ncol(xp)
-  list= SATA_AUD_COL(xp, s - nvp, q, init, initX, crit, maxiter, hits_ratio, levelpermt)
+  list= SATA_AUD_COL(xp, s - nvp, q, init, initX, crit, maxiter, hits_ratio, levelpermt,rand_seed)
   names(list) = c("initial_design","final_design","initial_criterion",
                   "final_criterion","time_consumed","criterion_history")
   if(vis == TRUE){

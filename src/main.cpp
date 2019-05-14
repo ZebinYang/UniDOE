@@ -140,7 +140,7 @@ double CritEval(NumericMatrix x0, int nlevel, StringVector crit)
 
 // [[Rcpp::export]]
 List SATA_UD(int nsamp, int nv, int nlevel, StringVector init_method, NumericMatrix initX,
-             StringVector crit, int maxiter, double hits_ratio, bool levelpermt)
+             StringVector crit, int maxiter, double hits_ratio, bool levelpermt, int rand_seed)
 {
   int i,j;
   List lst;
@@ -154,6 +154,7 @@ List SATA_UD(int nsamp, int nv, int nlevel, StringVector init_method, NumericMat
   NumericMatrix Init_matrix,return_matrix = NumericMatrix(nsamp,nv);
   vector<vector<double> > x(nsamp, vector<double>(nv, 0));
 
+  srand(rand_seed);
   start_time = clock();
   Init_matrix = Generate_init_matrix(as<string>(init_method),nsamp,nv,nlevel,initX);
   for(i=0;i<nsamp;i++) for(j=0;j<nv;j++) x[i][j] = Init_matrix(i,j);
@@ -177,7 +178,7 @@ List SATA_UD(int nsamp, int nv, int nlevel, StringVector init_method, NumericMat
 
 // [[Rcpp::export]]
 List SATA_AUD(NumericMatrix xp,int nnew, int nv, int nlevel, StringVector init_method, NumericMatrix initX,
-              StringVector crit, int maxiter, double hits_ratio, bool levelpermt)
+              StringVector crit, int maxiter, double hits_ratio, bool levelpermt, int rand_seed)
 {
   int i,j;
   List lst;
@@ -192,6 +193,7 @@ List SATA_AUD(NumericMatrix xp,int nnew, int nv, int nlevel, StringVector init_m
   vector<vector<double> > x(nsamp, vector<double>(nv, 0));
   NumericMatrix InputX(nnew,nv),Init_matrix(nsamp,nv),return_matrix = NumericMatrix(nsamp,nv);
 
+  srand(rand_seed);
   start_time = clock();
   InputX = Generate_Aug_matrix(as<string>(init_method),xp,nnew,nv,nlevel,initX);
   for(j=0;j<nv;j++)
@@ -218,7 +220,7 @@ List SATA_AUD(NumericMatrix xp,int nnew, int nv, int nlevel, StringVector init_m
 
 // [[Rcpp::export]]
 List SATA_AUD_COL(NumericMatrix xp, int nvnew, int nlevel, StringVector init_method, NumericMatrix initX,
-                  StringVector crit, int maxiter, double hits_ratio, bool levelpermt)
+                  StringVector crit, int maxiter, double hits_ratio, bool levelpermt, int rand_seed)
 {
   int i,j;
   List lst;
@@ -234,6 +236,7 @@ List SATA_AUD_COL(NumericMatrix xp, int nvnew, int nlevel, StringVector init_met
   vector<vector<double> > x(nsamp, vector<double>(nv, 0));
   NumericMatrix InputX(nsamp,nvnew),Init_matrix(nsamp,nv),return_matrix = NumericMatrix(nsamp,nv);
 
+  srand(rand_seed);
   start_time = clock();
   InputX = Generate_init_matrix(as<string>(init_method),nsamp,nvnew,nlevel,initX);
   for(j=0;j<nvp;j++) optimize_columns[j] = 0;

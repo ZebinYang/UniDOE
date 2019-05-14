@@ -2,7 +2,7 @@
 \alias{GenUD}
 \title{Generating Uniform Design of Experiments}
 \usage{
-GenUD(n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt,vis)
+GenUD(n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt,rand_seed,vis)
 }
 \description{
   This function takes n,s,q and other arguments to output a list(described below).
@@ -39,9 +39,11 @@ GenUD(n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt,vis)
              "A2" -- Minimize Average Chi-Square.
     }
 
-  \item{maxiter}{a positive integer  R  object. Maximum iteration number in outer while loop of SATA algorithm.}
+  \item{maxiter}{a positive integer R object. Maximum iteration number in outer while loop of SATA algorithm.}
 
-  \item{levelpermt}{a boolean R  object. It controls whether to use level permutation.}
+  \item{levelpermt}{a boolean R object. It controls whether to use level permutation.}
+
+  \item{rand_seed}{a integer R object. It controls the random seed used for optimization.}
 
   \item{hits_ratio}{a float R object. Default value is 0.1, which is the ratio to accept changes of design in inner for loop.}
 

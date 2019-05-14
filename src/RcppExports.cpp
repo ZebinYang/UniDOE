@@ -19,8 +19,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // SATA_UD
-List SATA_UD(int nsamp, int nv, int nlevel, StringVector init_method, NumericMatrix initX, StringVector crit, int maxiter, double hits_ratio, bool levelpermt);
-RcppExport SEXP _UniDOE_SATA_UD(SEXP nsampSEXP, SEXP nvSEXP, SEXP nlevelSEXP, SEXP init_methodSEXP, SEXP initXSEXP, SEXP critSEXP, SEXP maxiterSEXP, SEXP hits_ratioSEXP, SEXP levelpermtSEXP) {
+List SATA_UD(int nsamp, int nv, int nlevel, StringVector init_method, NumericMatrix initX, StringVector crit, int maxiter, double hits_ratio, bool levelpermt, int rand_seed);
+RcppExport SEXP _UniDOE_SATA_UD(SEXP nsampSEXP, SEXP nvSEXP, SEXP nlevelSEXP, SEXP init_methodSEXP, SEXP initXSEXP, SEXP critSEXP, SEXP maxiterSEXP, SEXP hits_ratioSEXP, SEXP levelpermtSEXP, SEXP rand_seedSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -33,13 +33,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     Rcpp::traits::input_parameter< double >::type hits_ratio(hits_ratioSEXP);
     Rcpp::traits::input_parameter< bool >::type levelpermt(levelpermtSEXP);
-    rcpp_result_gen = Rcpp::wrap(SATA_UD(nsamp, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt));
+    Rcpp::traits::input_parameter< int >::type rand_seed(rand_seedSEXP);
+    rcpp_result_gen = Rcpp::wrap(SATA_UD(nsamp, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed));
     return rcpp_result_gen;
 END_RCPP
 }
 // SATA_AUD
-List SATA_AUD(NumericMatrix xp, int nnew, int nv, int nlevel, StringVector init_method, NumericMatrix initX, StringVector crit, int maxiter, double hits_ratio, bool levelpermt);
-RcppExport SEXP _UniDOE_SATA_AUD(SEXP xpSEXP, SEXP nnewSEXP, SEXP nvSEXP, SEXP nlevelSEXP, SEXP init_methodSEXP, SEXP initXSEXP, SEXP critSEXP, SEXP maxiterSEXP, SEXP hits_ratioSEXP, SEXP levelpermtSEXP) {
+List SATA_AUD(NumericMatrix xp, int nnew, int nv, int nlevel, StringVector init_method, NumericMatrix initX, StringVector crit, int maxiter, double hits_ratio, bool levelpermt, int rand_seed);
+RcppExport SEXP _UniDOE_SATA_AUD(SEXP xpSEXP, SEXP nnewSEXP, SEXP nvSEXP, SEXP nlevelSEXP, SEXP init_methodSEXP, SEXP initXSEXP, SEXP critSEXP, SEXP maxiterSEXP, SEXP hits_ratioSEXP, SEXP levelpermtSEXP, SEXP rand_seedSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -53,13 +54,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     Rcpp::traits::input_parameter< double >::type hits_ratio(hits_ratioSEXP);
     Rcpp::traits::input_parameter< bool >::type levelpermt(levelpermtSEXP);
-    rcpp_result_gen = Rcpp::wrap(SATA_AUD(xp, nnew, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt));
+    Rcpp::traits::input_parameter< int >::type rand_seed(rand_seedSEXP);
+    rcpp_result_gen = Rcpp::wrap(SATA_AUD(xp, nnew, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed));
     return rcpp_result_gen;
 END_RCPP
 }
 // SATA_AUD_COL
-List SATA_AUD_COL(NumericMatrix xp, int nvnew, int nlevel, StringVector init_method, NumericMatrix initX, StringVector crit, int maxiter, double hits_ratio, bool levelpermt);
-RcppExport SEXP _UniDOE_SATA_AUD_COL(SEXP xpSEXP, SEXP nvnewSEXP, SEXP nlevelSEXP, SEXP init_methodSEXP, SEXP initXSEXP, SEXP critSEXP, SEXP maxiterSEXP, SEXP hits_ratioSEXP, SEXP levelpermtSEXP) {
+List SATA_AUD_COL(NumericMatrix xp, int nvnew, int nlevel, StringVector init_method, NumericMatrix initX, StringVector crit, int maxiter, double hits_ratio, bool levelpermt, int rand_seed);
+RcppExport SEXP _UniDOE_SATA_AUD_COL(SEXP xpSEXP, SEXP nvnewSEXP, SEXP nlevelSEXP, SEXP init_methodSEXP, SEXP initXSEXP, SEXP critSEXP, SEXP maxiterSEXP, SEXP hits_ratioSEXP, SEXP levelpermtSEXP, SEXP rand_seedSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -72,16 +74,17 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     Rcpp::traits::input_parameter< double >::type hits_ratio(hits_ratioSEXP);
     Rcpp::traits::input_parameter< bool >::type levelpermt(levelpermtSEXP);
-    rcpp_result_gen = Rcpp::wrap(SATA_AUD_COL(xp, nvnew, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt));
+    Rcpp::traits::input_parameter< int >::type rand_seed(rand_seedSEXP);
+    rcpp_result_gen = Rcpp::wrap(SATA_AUD_COL(xp, nvnew, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_UniDOE_CritEval", (DL_FUNC) &_UniDOE_CritEval, 3},
-    {"_UniDOE_SATA_UD", (DL_FUNC) &_UniDOE_SATA_UD, 9},
-    {"_UniDOE_SATA_AUD", (DL_FUNC) &_UniDOE_SATA_AUD, 10},
-    {"_UniDOE_SATA_AUD_COL", (DL_FUNC) &_UniDOE_SATA_AUD_COL, 9},
+    {"_UniDOE_SATA_UD", (DL_FUNC) &_UniDOE_SATA_UD, 10},
+    {"_UniDOE_SATA_AUD", (DL_FUNC) &_UniDOE_SATA_AUD, 11},
+    {"_UniDOE_SATA_AUD_COL", (DL_FUNC) &_UniDOE_SATA_AUD_COL, 10},
     {NULL, NULL, 0}
 };
 

@@ -2,7 +2,7 @@
 \alias{GenUD_MS}
 \title{Generating Uniform Design of Experiments using diffrent initial designs}
 \usage{
-GenUD_MS(n, s, q, crit, maxiter, nshoot, vis)
+GenUD_MS(n, s, q, crit, maxiter, nshoot, rand_seed, vis)
 }
 \description{
 This function takes n,s,q,crit and nshoot to return a design. nshoot number of random initial designs are used in each shoot. The design returned is the best design over all shoots.
@@ -33,6 +33,8 @@ This function takes n,s,q,crit and nshoot to return a design. nshoot number of r
   \item{maxiter}{a positive integer  R  object. Maximum iteration number in outer while loop of SATA algorithm in each shoot.}
 
   \item{nshoot}{Total counts to try different initial designs.}
+
+  \item{rand_seed}{a integer R object. It controls the random seed used for optimization.}
 
   \item{vis}{a boolean R object. If true, plot the criterion value sequence for all shoots.}
 

@@ -2,7 +2,7 @@
 \alias{GenAUD_MS}
 \title{Generating sequential Uniform Design of Experiments (Augmenting Runs) using diffrent initial designs}
 \usage{
-GenAUD_MS(xp, n, s, q, crit, maxiter, nshoot, vis=FALSE)
+GenAUD_MS(xp, n, s, q, crit, maxiter, nshoot, rand_seed, vis=FALSE)
 }
 \description{
   This function takes n,s,q and other arguments to output a list(described below).
@@ -36,6 +36,8 @@ GenAUD_MS(xp, n, s, q, crit, maxiter, nshoot, vis=FALSE)
   \item{maxiter}{a positive integer  R  object. Maximum iteration number in outer while loop of SATA algorithm in each shoot.}
 
   \item{nshoot}{Total counts to try different initial designs.}
+
+  \item{rand_seed}{a integer R object. It controls the random seed used for optimization.}
 
   \item{vis}{a boolean R object. If true, plot the criterion value sequence for all shoots.}
 }

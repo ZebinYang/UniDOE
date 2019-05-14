@@ -2,7 +2,7 @@
 \alias{GenAUD}
 \title{Generating sequential Uniform Design of Experiments (Augmenting Runs)}
 \usage{
-GenAUD(xp,n,s,q,initX,crit,maxiter,hits_ratio,levelpermt,vis)
+GenAUD(xp,n,s,q,initX,crit,maxiter,hits_ratio,levelpermt, rand_seed,vis)
 }
 \description{
     This function takes n,s,q; a unchanged initial design and other arguments to output a list (described below).}
@@ -45,6 +45,8 @@ GenAUD(xp,n,s,q,initX,crit,maxiter,hits_ratio,levelpermt,vis)
   \item{hits_ratio}{a float R object. Default value is 0.1, which is the ratio to accept changes of design in inner for loop.}
 
   \item{levelpermt}{a boolean R  object. It controls whether to use level permutation.}
+
+  \item{rand_seed}{a integer R object. It controls the random seed used for optimization.}
 
   \item{vis}{a boolean variable. If true, plot the trace of criterion values.}
 }

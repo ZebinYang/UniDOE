@@ -24,7 +24,7 @@ DesignQuery <- function(n,s,q,crit="CD2", ShowCrit = TRUE)
 }
 
 
-GenUD_MS <- function(n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE)
+GenUD_MS <- function(n, s, q, crit="CD2", maxiter=30, nshoot=5, rand_seed=0, vis=FALSE)
 {
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
@@ -36,7 +36,7 @@ GenUD_MS <- function(n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE)
   bestcrit = 1e10
   for (i in 1:nshoot)
   {
-    list0 = GenUD(n=n,s=s,q=q, crit=crit, maxiter = maxiter)
+    list0 = GenUD(n=n,s=s,q=q, crit=crit, maxiter = maxiter, rand_seed = nshoot+rand_seed-1)
     crit_list = c(crit_list, list0$criterion_history)
     shoot_idx = c(shoot_idx, length(list0$criterion_history))
     time_list = c(time_list, list0$time_consumed)
@@ -56,7 +56,7 @@ GenUD_MS <- function(n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE)
   return(as.data.frame(bestdesign))
 }
 
-GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE)
+GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_seed=0, vis=FALSE)
 {
   bflag_xp = FALSE
   for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
@@ -77,7 +77,7 @@ GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE
   bestcrit = 1e10
   for (i in 1:nshoot)
   {
-    list0 = GenAUD(xp=xp, n=n, s=s, q=q, crit=crit, maxiter = maxiter)
+    list0 = GenAUD(xp=xp, n=n, s=s, q=q, crit=crit, maxiter = maxiter, rand_seed = nshoot+rand_seed-1)
     crit_list = c(crit_list, list0$criterion_history)
     shoot_idx = c(shoot_idx, length(list0$criterion_history))
     time_list = c(time_list, list0$time_consumed)
@@ -97,7 +97,7 @@ GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE
   return(as.data.frame(bestdesign))
 }
 
-GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=FALSE)
+GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_seed=0, vis=FALSE)
 {
   bflag_xp = FALSE
   for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
@@ -118,7 +118,7 @@ GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, vis=F
   bestcrit = 1e10
   for (i in 1:nshoot)
   {
-    list0 = GenAUD_COL(xp=xp, n=n, s=s, q=q, crit=crit, maxiter = maxiter)
+    list0 = GenAUD_COL(xp=xp, n=n, s=s, q=q, crit=crit, maxiter = maxiter, rand_seed = nshoot+rand_seed-1)
     crit_list = c(crit_list, list0$criterion_history)
     shoot_idx = c(shoot_idx, length(list0$criterion_history))
     time_list = c(time_list, list0$time_consumed)

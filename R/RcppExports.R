@@ -5,15 +5,15 @@ CritEval <- function(x0, nlevel, crit) {
     .Call(`_UniDOE_CritEval`, x0, nlevel, crit)
 }
 
-SATA_UD <- function(nsamp, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt) {
-    .Call(`_UniDOE_SATA_UD`, nsamp, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt)
+SATA_UD <- function(nsamp, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed) {
+    .Call(`_UniDOE_SATA_UD`, nsamp, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed)
 }
 
-SATA_AUD <- function(xp, nnew, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt) {
-    .Call(`_UniDOE_SATA_AUD`, xp, nnew, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt)
+SATA_AUD <- function(xp, nnew, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed) {
+    .Call(`_UniDOE_SATA_AUD`, xp, nnew, nv, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed)
 }
 
-SATA_AUD_COL <- function(xp, nvnew, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt) {
-    .Call(`_UniDOE_SATA_AUD_COL`, xp, nvnew, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt)
+SATA_AUD_COL <- function(xp, nvnew, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed) {
+    .Call(`_UniDOE_SATA_AUD_COL`, xp, nvnew, nlevel, init_method, initX, crit, maxiter, hits_ratio, levelpermt, rand_seed)
 }
 
