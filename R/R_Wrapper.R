@@ -12,7 +12,8 @@ GenUD <- function(n,s,q,init="rand",initX=matrix(0),crit="CD2",
   #check the arguments
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
-  else if(s<=1 || n<=2 || q <=1){ stop(("The size of design should be larger than 2*2.")) }
+  else if(n > q^s){ stop(("n should not be larger than q^s")) }
+  else if(s<1 || n<2 || q <2){ stop(("Invalid design table.")) }
   else if(init=="input"){
     initX = as.matrix(initX)
     bflag_init = FALSE
@@ -50,7 +51,8 @@ GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
-  else if(s<=1 || n<=2 || q <=1){ stop(("The size of design should be larger than 2*2.")) }
+  else if(n > q^s){ stop(("n should not be larger than q^s")) }
+  else if(s<1 || n<2 || q <2){ stop(("Invalid design table.")) }
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n <= nrow(xp)) | (s != ncol(xp)) ){
     stop("The size of the existing design matrix xp does not match the given n,s.")}
@@ -97,7 +99,8 @@ GenAUD_COL <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
   for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
-  else if(s<=1 || n<=2 || q <=1){ stop(("\n The size of design should be larger than 2*2.")) }
+  else if(n > q^s){ stop(("n should not be larger than q^s")) }
+  else if(s<1 || n<2 || q <2){ stop(("Invalid design table.")) }
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n != nrow(xp)) | (s <= ncol(xp)) ){
     stop("The size of the existing design matrix xp does not match the given n,s.") }

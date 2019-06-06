@@ -5,7 +5,8 @@ DesignQuery <- function(n,s,q,crit="CD2", ShowCrit = TRUE)
 {
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
-  else if(s<=1 || n<=2 || q <=1){ stop(("The size of design should be larger than 2*2.")) }
+  else if(n > q^s){ stop(("n should not be larger than q^s")) }
+  else if(s<1 || n<2 || q <2){ stop(("Invalid design table.")) }
 
   if (crit=="CD2") DataX = UD_CD2
   if (crit=="MD2") DataX = UD_MD2
@@ -28,7 +29,8 @@ GenUD_MS <- function(n, s, q, crit="CD2", maxiter=30, nshoot=5, rand_seed=0, vis
 {
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
-  else if(s<=1 || n<=2 || q <=1){ stop(("The size of design should be larger than 2*2.")) }
+  else if(n > q^s){ stop(("n should not be larger than q^s")) }
+  else if(s<1 || n<2 || q <2){ stop(("Invalid design table.")) }
 
   crit_list = c()
   shoot_idx = c()
@@ -62,7 +64,8 @@ GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_seed
   for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
-  else if(s<=1 || n<=2 || q <=1){ stop(("The size of design should be larger than 2*2.")) }
+  else if(n > q^s){ stop(("n should not be larger than q^s")) }
+  else if(s<1 || n<2 || q <2){ stop(("Invalid design table.")) }
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n <= nrow(xp)) | (s != ncol(xp)) ){
     stop("The size of the existing design matrix xp does not match the given n,s.")}
@@ -103,7 +106,8 @@ GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_
   for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
   else if(n%%q != 0){stop("n should be multiple of q.")}
-  else if(s<=1 || n<=2 || q <=1){ stop(("\n The size of design should be larger than 2*2.")) }
+  else if(n > q^s){ stop(("n should not be larger than q^s")) }
+  else if(s<1 || n<2 || q <2){ stop(("Invalid design table.")) }
   else if(is.matrix(xp)==FALSE){stop("Please input X0 to do the augmented searching. End of program.") }
   else if ((n != nrow(xp)) | (s <= ncol(xp)) ){
     stop("The size of the existing design matrix xp does not match the given n,s.") }
