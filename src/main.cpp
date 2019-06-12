@@ -28,7 +28,7 @@ NumericMatrix Generate_init_matrix(string init_method, int nsamp, int nv, int nl
 {
   int i,j;
   vector<double> col;
-  NumericMatrix return_matrix  = NumericMatrix(nsamp,nv);
+  NumericMatrix return_matrix = NumericMatrix(nsamp,nv);
 
   if (init_method == "input" && initX.nrow()>1)
   {

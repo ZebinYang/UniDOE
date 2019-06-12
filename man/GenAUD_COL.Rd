@@ -70,5 +70,5 @@ GenAUD_COL(xp,n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt,rand_seed,vis)
   q=3
   mat0 = matrix(c(1,2,2,1,1,3,3,1,2,3,3,2),ncol=2,byrow=TRUE)
   crit = "MD2" #(Mixture L2 criteria)
-  res = GenAUD_COL(xp=mat0,n,s,q,crit=crit,maxiter=100,vis = TRUE)
+  res = GenAUD_COL(xp=mat0,n,s,q,crit=crit,maxiter=100,vis=TRUE)
 }

@@ -2,7 +2,7 @@
 \alias{GenAUD}
 \title{Generating sequential Uniform Design of Experiments (Augmenting Runs)}
 \usage{
-GenAUD(xp,n,s,q,initX,crit,maxiter,hits_ratio,levelpermt, rand_seed,vis)
+GenAUD(xp,n,s,q,initX,crit,maxiter,hits_ratio,levelpermt,rand_seed,vis)
 }
 \description{
     This function takes n,s,q; a unchanged initial design and other arguments to output a list (described below).}
@@ -71,5 +71,5 @@ GenAUD(xp,n,s,q,initX,crit,maxiter,hits_ratio,levelpermt, rand_seed,vis)
   q=4
   mat0 = matrix(c(1,1,1,2,2,2,3,3,3),ncol=3,byrow=TRUE)# nb. of columns=s
   crit = "MD2" #(Mixture L2 criteria)
-  res = GenAUD(xp=mat0,n,s,q,crit=crit,maxiter=100,vis = TRUE)
+  res = GenAUD(xp=mat0,n,s,q,crit=crit,maxiter=100,vis=TRUE)
 }

@@ -53,6 +53,6 @@ This function takes n,s,q,crit and nshoot to return a design. nshoot number of r
 
 \examples{
 D = GenUD_MS(36, 4, 6, crit="CD2",
-             maxiter=50, nshoot = 6,
+             maxiter=50, nshoot=6,
              vis=TRUE)
 }

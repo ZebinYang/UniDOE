@@ -56,7 +56,7 @@ GenAUD_MS(xp, n, s, q, crit, maxiter, nshoot, rand_seed, vis=FALSE)
 
 
 \examples{
-  D1 = DesignQuery(n = 18, s = 7, q = 3, crit = "MD2")
-  D2 = GenAUD_MS(xp=D1, n=21, s = 7, q = 3, crit="MD2",
-                 maxiter = 100, nshoot = 5)
+  D1 = DesignQuery(n=18, s=7, q=3, crit="MD2")
+  D2 = GenAUD_MS(xp=D1, n=21, s=7, q=3, crit="MD2",
+                 maxiter=100, nshoot=5)
 }

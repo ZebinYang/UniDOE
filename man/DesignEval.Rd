@@ -5,7 +5,7 @@
 DesignEval(x,crit)
 }
 \description{
-  This function takes matrix X0,q and crit to output the criterion value.
+  This function takes matrix X and crit to output the criterion value.
 }
 \arguments{
 

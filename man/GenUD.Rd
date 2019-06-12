@@ -86,5 +86,5 @@ GenUD(n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt,rand_seed,vis)
   s=2
   q=3
   initX = matrix(c(1,1,2,2,3,3,3,3,1,1,2,2),ncol=2)
-  res = GenUD(n,s,q,init=init,initX = initX,maxiter=100)
+  res = GenUD(n,s,q,init=init,initX=initX,maxiter=100)
 }

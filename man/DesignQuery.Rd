@@ -2,7 +2,7 @@
 \alias{DesignQuery}
 \title{Evaluate design in terms of criteria}
 \usage{
-DesignQuery(n,s,q,crit, ShowCrit)
+DesignQuery(n,s,q,crit,ShowCrit)
 }
 \description{
   This function takes size of desired design,criterion crit.

@@ -38,7 +38,7 @@ GenUD_MS <- function(n, s, q, crit="CD2", maxiter=30, nshoot=5, rand_seed=0, vis
   bestcrit = 1e10
   for (i in 1:nshoot)
   {
-    list0 = GenUD(n=n,s=s,q=q, crit=crit, maxiter = maxiter, rand_seed = nshoot+rand_seed-1)
+    list0 = GenUD(n=n,s=s,q=q, crit=crit, maxiter=maxiter, rand_seed=i + rand_seed)
     crit_list = c(crit_list, list0$criterion_history)
     shoot_idx = c(shoot_idx, length(list0$criterion_history))
     time_list = c(time_list, list0$time_consumed)
@@ -80,7 +80,7 @@ GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_seed
   bestcrit = 1e10
   for (i in 1:nshoot)
   {
-    list0 = GenAUD(xp=xp, n=n, s=s, q=q, crit=crit, maxiter = maxiter, rand_seed = nshoot+rand_seed-1)
+    list0 = GenAUD(xp=xp, n=n, s=s, q=q, crit=crit, maxiter=maxiter, rand_seed=i + rand_seed)
     crit_list = c(crit_list, list0$criterion_history)
     shoot_idx = c(shoot_idx, length(list0$criterion_history))
     time_list = c(time_list, list0$time_consumed)
@@ -100,7 +100,7 @@ GenAUD_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_seed
   return(as.data.frame(bestdesign))
 }
 
-GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_seed=0, vis=FALSE)
+GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot=5, rand_seed=0, vis=FALSE)
 {
   bflag_xp = FALSE
   for (i in 1:ncol(xp)) { bflag_xp = bflag_xp || (max(table(xp[,i]))>n/q)}
@@ -122,7 +122,7 @@ GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_
   bestcrit = 1e10
   for (i in 1:nshoot)
   {
-    list0 = GenAUD_COL(xp=xp, n=n, s=s, q=q, crit=crit, maxiter = maxiter, rand_seed = nshoot+rand_seed-1)
+    list0 = GenAUD_COL(xp=xp, n=n, s=s, q=q, crit=crit, maxiter=maxiter, rand_seed=nshoot + rand_seed)
     crit_list = c(crit_list, list0$criterion_history)
     shoot_idx = c(shoot_idx, length(list0$criterion_history))
     time_list = c(time_list, list0$time_consumed)
@@ -144,9 +144,9 @@ GenAUD_COL_MS <- function(xp, n, s, q, crit="CD2", maxiter=30, nshoot = 5, rand_
 }
 
 DesignPairPlot <- function(D, Diag=FALSE) {
-  if (Diag==TRUE) { pairs(D, lower.panel = panel.scatter, upper.panel = panel.heatmap, diag.panel = panel.bar, cex.labels=1.2) }
+  if (Diag==TRUE) { pairs(D, lower.panel=panel.scatter, upper.panel=panel.heatmap, diag.panel=panel.bar, cex.labels=1.2) }
   else {
-    pairs(D, lower.panel = panel.scatter, upper.panel = panel.heatmap, cex.labels=1.2)
+    pairs(D, lower.panel = panel.scatter, upper.panel=panel.heatmap, cex.labels=1.2)
   }
 }
 
@@ -154,8 +154,8 @@ panel.bar <- function(x, ...)
 {
   usr <- par("usr"); on.exit(par(usr))
   qx = table(x)
-  par(usr = c(0, length(qx), 0, max(qx)*1.5))
-  barplot(qx, width=1, space = 0, col=5, axes=FALSE, add = TRUE)
+  par(usr=c(0, length(qx), 0, max(qx)*1.5))
+  barplot(qx, width=1, space=0, col=5, axes=FALSE, add=TRUE)
 }
 
 panel.scatter <- function(x, y, ...)
