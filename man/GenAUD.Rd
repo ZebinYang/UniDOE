@@ -27,17 +27,17 @@ GenAUD(xp,n,s,q,initX,crit,maxiter,hits_ratio,levelpermt,rand_seed,vis)
 
   \item{crit}{a character R object. Type of criterion to use:
 
-             "CD2"  --Centered L2 Discrepancy (default) ;
+             "CD2" -- Centered L2 Discrepancy (default) ;
 
              "WD2" -- Wrap-around L2 Discrepancy ;
 
-             "MD2"  --Mixture L2  Discrepancy ;
+             "MD2" -- Mixture L2  Discrepancy ;
 
              "maximin" -- Maximin Discrepancy ;
 
-             "MC" -- Minimize Coherence ;
+             "MC" -- Minimum Coherence ;
 
-             "A2" -- Minimize Average Chi-Square.
+             "A2" -- Mean Squared Correlation.
     }
 
   \item{maxiter}{a positive integer  R  object. Maximum iteration number in outer while loop of SOAT algorithm.}
@@ -56,11 +56,7 @@ GenAUD(xp,n,s,q,initX,crit,maxiter,hits_ratio,levelpermt,rand_seed,vis)
 }
 
 \author{
-   Aijun Zhang, Haoyu Li, Shijie Quan, Zebin Yang
-}
-
-\references{
- Zhang, A. and Li, H. (2017). UniDOE: An R package for constructing uniform design of experiments via stochastic and adaptive threshold accepting algorithm. Technical Report.
+   Aijun Zhang, Zebin Yang, Haoyu Li, Shijie Quan
 }
 
 \examples{

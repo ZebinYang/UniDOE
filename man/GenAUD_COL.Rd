@@ -55,11 +55,7 @@ GenAUD_COL(xp,n,s,q,init,initX,crit,maxiter,hits_ratio,levelpermt,rand_seed,vis)
 }
 
 \author{
-   Aijun Zhang, Haoyu Li, Shijie Quan, Zebin Yang
-}
-
-\references{
-  Zhang, A. and Li, H. (2017). UniDOE: An R package for constructing uniform design of experiments via stochastic and adaptive threshold accepting algorithm. Technical Report.
+   Aijun Zhang, Zebin Yang, Haoyu Li, Shijie Quan
 }
 
 \examples{

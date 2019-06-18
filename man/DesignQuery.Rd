@@ -18,17 +18,17 @@ DesignQuery(n,s,q,crit,ShowCrit)
 
   \item{crit}{a character R object. Type of criterion to use:
 
-             "CD2"  --Centered L2 Discrepancy (default) ;
+             "CD2" -- Centered L2 Discrepancy (default) ;
 
              "WD2" -- Wrap-around L2 Discrepancy ;
 
-             "MD2"  --Mixture L2  Discrepancy ;
+             "MD2" -- Mixture L2  Discrepancy ;
 
              "maximin" -- Maximin Discrepancy ;
 
-             "MC" -- Minimize Coherence ;
+             "MC" -- Minimum Coherence ;
 
-             "A2" -- Minimize Average Chi-Square.
+             "A2" -- Mean Squared Correlation.
     }
 
 \item{ShowCrit}{If TRUE, print CD2,MD2,maximin value of required design.
@@ -42,10 +42,7 @@ DesignQuery(n,s,q,crit,ShowCrit)
 }
 
 \author{
-   Aijun Zhang, Haoyu Li, Shijie Quan, Zebin Yang
-}
-\references{
- Zhang, A. and Li, H. (2017). UniDOE: An R package for constructing uniform design of experiments via stochastic and adaptive threshold accepting algorithm. Technical Report.
+   Aijun Zhang, Zebin Yang, Haoyu Li, Shijie Quan
 }
 
 \examples{

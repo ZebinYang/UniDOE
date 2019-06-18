@@ -21,12 +21,8 @@ DesignPairPlot(D,Diag)
 }
 
 \author{
-   Aijun Zhang, Haoyu Li, Shijie Quan, Zebin Yang
+   Aijun Zhang, Zebin Yang, Haoyu Li, Shijie Quan
 }
-\references{
- Zhang, A. and Li, H. (2017). UniDOE: An R package for constructing uniform design of experiments via stochastic and adaptive threshold accepting algorithm. Technical Report.
-}
-
 
 \examples{
 ##e.g.1

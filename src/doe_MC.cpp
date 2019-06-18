@@ -44,6 +44,7 @@ vector<vector<double> > MC::get_design()
 void MC::evaluate_criteria()
 {
     int i,j,k,count = 0;
+    double a2_surrogate_obj;
     obj = surrogate_obj = 0;
     CORR.assign(static_cast<unsigned long long int>(nv), vector<double>(nv, 0));
     for(i=0;i<nv;i++)
@@ -64,7 +65,7 @@ void MC::evaluate_criteria()
             CORR[j][i] = CORR[i][j];
         }
     }
-    surrogate_obj = obj * 10000 * (nsamp*(nsamp-1)/2) + count;
+    surrogate_obj = obj * M + count;
 }
 
 double MC::columnwise_exchange(int ncol, int ncp, vector<int> idx1,vector<int> idx2)
@@ -119,27 +120,8 @@ double MC::columnwise_exchange(int ncol, int ncp, vector<int> idx1,vector<int> i
         }
         swap(tempx[i1][ncol], tempx[i2][ncol]);
     }
-    diff =  temp_obj * 10000 * (nsamp*(nsamp-1)/2) + count - surrogate_obj;
+    diff =  temp_obj * M + count - surrogate_obj;
     return(diff);
-}
-
-double MC::calculate_lower_bound()
-{
-    double lb1 = 0, lb2 = 0, k1, k2;
-    if (nv>nsamp)
-    {
-        lb1 = sqrt((nv-nsamp+1.0)/((nsamp-1.0)*(nv-1.0)));
-        if (((nv%2 == 0)&(nlevel%2 == 0))|(nlevel%2 == 1))
-        {
-            k1 = floor(-2*nv*A/(nsamp*(nsamp-1)));
-            lb2 = sqrt(-k1*nsamp*(nsamp-1)*(k1+1.0)/(4*nv*(nv-1)*A*A) - (2*k1+1)/(2*(nv-1)*A) +1.0*(nv-nsamp)/(nsamp*(nv-1)));
-        } else {
-            k2 = floor((-4*nv*A-nsamp*(nsamp-1))/(2*nsamp*(nsamp-1)));
-            lb2 = sqrt(-nsamp*(nsamp-1)*(4*k2*k2+8*k2+3)/(16*nv*(nv-1)*A*A)-(k2+1)/((nv-1)*A)+1.0*(nv-nsamp)/(nsamp*(nv-1)));
-        }
-    }
-    cout<<"lower bound:"<<lb1<<" "<<lb2<<endl;
-    return(lb2);
 }
 
 vector<double> MC::get_criteria_matrix()
