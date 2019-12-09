@@ -18,7 +18,7 @@ panel.scatter(x, y, ...)
 panel.heatmap(x, y, ...)
 }
 \author{
-  Aijun Zhang, Haoyu Li, Shijie Quan, Zebin Yang
+  Aijun Zhang, Zebin Yang, Haoyu Li, Shijie Quan
 }
 \details{These functions are internal functions, not directly recalled by R users.}
 \keyword{internal}
