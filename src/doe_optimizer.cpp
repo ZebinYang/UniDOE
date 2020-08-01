@@ -60,6 +60,8 @@ Optimizer::Optimizer(vector<vector<double> > x_init, int nnew_init, int np_init,
     level_permt.assign(nv, level_permt_init);
 
     //  Initialize some important parameters
+    alpha1 = 1.25;
+    alpha2 = 0.8;    
     maxcol = 0;
     maxpairs = 0;
     idx.assign(nnew, 0);
