@@ -135,6 +135,7 @@ double CritEval(NumericMatrix x0, int nlevel, StringVector crit)
   }
   c->evaluate_criteria();
   criteria = c->get_criteria();
+  delete c;
   return(criteria);
 }
 
