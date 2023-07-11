@@ -193,6 +193,7 @@ vector<double> Optimizer::SATA_Optimize()
         if ((hits / maxcol) < hits_ratio) th = th * alpha1; else th = th * alpha2;
         critobj_vector.push_back(global_obj);
     }
+    delete c;
     return (critobj_vector);
 }
 

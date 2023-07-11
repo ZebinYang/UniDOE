@@ -30,6 +30,7 @@ protected:
 
 public:
     Criteria(int,int,int);
+    virtual ~Criteria(){};
     double get_criteria();
     double get_surrogate_criteria();
     double get_columnwise_exchange(int ncol,int ncp, vector<int> idx1,vector<int> idx2);

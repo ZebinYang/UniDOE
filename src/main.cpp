@@ -103,7 +103,7 @@ NumericMatrix Generate_Aug_matrix(string init_method, NumericMatrix xp, int nnew
 double CritEval(NumericMatrix x0, int nlevel, StringVector crit)
 {
   Criteria *c;
-  double criteria;
+  double criteria = 1.0;
   int i, j, nv = x0.ncol(), nsamp= x0.nrow();
   int critopt = criteria_selector(as<string> (crit));
   vector<vector<double> > x(nsamp, vector<double>(nv, 0));
@@ -133,10 +133,10 @@ double CritEval(NumericMatrix x0, int nlevel, StringVector crit)
     c = new CD2(x, nsamp, nv, nlevel);
   break;
   }
-  c->evaluate_criteria();
   criteria = c->get_criteria();
   x.clear();
   x.shrink_to_fit();
+  delete c;
   return(criteria);
 }
 
