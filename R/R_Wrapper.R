@@ -7,7 +7,7 @@ DesignEval<-function(x = matrix(0), crit="CD2")
 }
 
 GenUD <- function(n,s,q,init="rand",initX=matrix(0),crit="CD2",
-                  maxiter=10000,hits_ratio = 0.1,levelpermt=FALSE,rand_seed=0,vis=FALSE)
+                  maxiter=10000,hits_ratio=0.1,levelpermt=FALSE,rand_seed=0,vis=FALSE)
 {
   #check the arguments
   if( (n != round(n)) || (s != round(s)) || (q != round(q))){ stop("Wrong types of n,s,q.")}
@@ -43,7 +43,7 @@ GenUD <- function(n,s,q,init="rand",initX=matrix(0),crit="CD2",
 }
 
 GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
-                    maxiter=10000, hits_ratio = 0.1,levelpermt=FALSE,rand_seed=0,vis=FALSE)
+                    maxiter=10000,hits_ratio = 0.1,levelpermt=FALSE,rand_seed=0,vis=FALSE)
 {
   #check the arguments
   xp = as.matrix(xp)
@@ -91,7 +91,7 @@ GenAUD <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
 }
 
 GenAUD_COL <- function (xp,n,s,q,init="rand",initX=matrix(0),crit="CD2",
-                        maxiter=10000, hits_ratio = 0.1, levelpermt=FALSE,rand_seed,vis=FALSE)
+                        maxiter=10000,hits_ratio=0.1,levelpermt=FALSE,rand_seed=0,vis=FALSE)
 {
   #check the arguments
   xp = as.matrix(xp)
