@@ -135,7 +135,8 @@ double CritEval(NumericMatrix x0, int nlevel, StringVector crit)
   }
   c->evaluate_criteria();
   criteria = c->get_criteria();
-  delete c;
+  x.clear();
+  x.shrink_to_fit();
   return(criteria);
 }
 
