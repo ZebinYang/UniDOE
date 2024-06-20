@@ -3,6 +3,7 @@
 #include <ctime>
 #include <cmath>
 #include <algorithm>
+#include <random>
 #include "doe_optimizer.h"
 
 #include <Rcpp.h>
@@ -10,6 +11,7 @@
 
 using namespace Rcpp;
 using namespace std;
+
 
 int criteria_selector(string crit)
 {
@@ -24,7 +26,7 @@ int criteria_selector(string crit)
   return critopt;
 }
 
-NumericMatrix Generate_init_matrix(string init_method, int nsamp, int nv, int nlevel, NumericMatrix initX)
+NumericMatrix Generate_init_matrix(string init_method, int nsamp, int nv, int nlevel, NumericMatrix initX, int rand_seed)
 {
   int i,j;
   vector<double> col;
@@ -43,7 +45,8 @@ NumericMatrix Generate_init_matrix(string init_method, int nsamp, int nv, int nl
     for(i=1;i<=nsamp;i++) col.push_back((i%nlevel)+1);
     for(i=0;i<nv;i++)
     {
-      random_shuffle (col.begin(), col.end());
+      std::mt19937 rng(rand_seed);
+      std::shuffle(col.begin(), col.end(), rng);
       for(j=0;j<nsamp;j++)  return_matrix(j,i) = col[j];
     }
   }
@@ -158,7 +161,7 @@ List SATA_UD(int nsamp, int nv, int nlevel, StringVector init_method, NumericMat
 
   srand(rand_seed);
   start_time = clock();
-  Init_matrix = Generate_init_matrix(as<string>(init_method),nsamp,nv,nlevel,initX);
+  Init_matrix = Generate_init_matrix(as<string>(init_method),nsamp,nv,nlevel,initX,rand_seed);
   for(i=0;i<nsamp;i++) for(j=0;j<nv;j++) x[i][j] = Init_matrix(i,j);
   Optimizer opt(x, nsamp, 0, nv, nlevel, optimize_columns, critopt, maxiter, hits_ratio, levelpermt);
   critobj_vector = opt.SATA_Optimize();
@@ -240,7 +243,7 @@ List SATA_AUD_COL(NumericMatrix xp, int nvnew, int nlevel, StringVector init_met
 
   srand(rand_seed);
   start_time = clock();
-  InputX = Generate_init_matrix(as<string>(init_method),nsamp,nvnew,nlevel,initX);
+  InputX = Generate_init_matrix(as<string>(init_method),nsamp,nvnew,nlevel,initX,rand_seed);
   for(j=0;j<nvp;j++) optimize_columns[j] = 0;
   for(i=0;i<nsamp;i++)
   {
